@@ -29,7 +29,18 @@ function App() {
   };
 
   const verifyData = async () => {
-    throw new Error("Not implemented");
+    // By input correct data and clicking Verify button, User can check if data is tampered
+    // If data is tampered, User can recover data, by clicking Update button
+    const response = await fetch(API_URL);
+    const existingData = await response.json();
+    const inputData = { data };
+    if (existingData.data === inputData.data) {
+      console.log('Your data is secure');
+    } else {
+      console.log('Your data is tampered');
+      // Or just update directly if data is tampered
+      // updateData();
+    }
   };
 
   return (
